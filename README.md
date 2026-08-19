@@ -42,18 +42,34 @@ TIME             AVG   CPU 0   CPU 1   CPU 2   CPU 3   CPU 4   CPU 5   CPU 6   C
 
 ## 📦 Installation
 
-### Debian / Ubuntu (.deb)
-Download the `.deb` package for your architecture from [Releases](https://github.com/arghyadipchak/cpumon/releases) and install:
+### 1. Debian / Ubuntu (`.deb`)
+Download the latest `.deb` package for your architecture from [Releases](https://github.com/arghyadipchak/cpumon/releases) and install:
 ```bash
-sudo dpkg -i cpumon_*_amd64.deb   # or cpumon_*_arm64.deb
+# For x86_64 / AMD64:
+sudo dpkg -i cpumon_*_amd64.deb
+
+# For ARM64 / aarch64:
+sudo dpkg -i cpumon_*_arm64.deb
+```
+*Automatically installs `/usr/bin/cpumon` and autocompletions for Bash, Zsh, and Fish*
+
+### 2. Standalone Binary (`.tar.gz`)
+Download and extract the pre-compiled archive from [Releases](https://github.com/arghyadipchak/cpumon/releases):
+```bash
+# Extract archive
+tar -xzf cpumon-*-x86_64-unknown-linux-musl.tar.gz
+cd cpumon-*-x86_64-unknown-linux-musl
+
+# Move binary to your PATH
+sudo cp cpumon /usr/local/bin/
 ```
 
-### Using Cargo (from Git)
+### 3. Using Cargo (from Git)
 ```bash
 cargo install --git https://github.com/arghyadipchak/cpumon.git
 ```
 
-### Build from Source
+### 4. Build from Source
 ```bash
 git clone https://github.com/arghyadipchak/cpumon.git
 cd cpumon
