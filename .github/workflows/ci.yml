@@ -20,13 +20,13 @@ jobs:
         with:
           components: rustfmt, clippy
 
-      - name: Rust Cache
+      - name: Rust cache
         uses: Swatinem/rust-cache@v2
 
       - name: Check code formatting
         run: cargo fmt --all --check
 
-      - name: Run Clippy lints
+      - name: Run clippy lints
         run: cargo clippy --all-targets -- -D warnings -D clippy::pedantic
 
       - name: Run test suite
