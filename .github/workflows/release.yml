@@ -16,13 +16,17 @@ jobs:
       matrix:
         include:
           - target: x86_64-unknown-linux-gnu
-            use_cross: false
+            deb: true
+            cross: false
           - target: x86_64-unknown-linux-musl
-            use_cross: false
+            deb: false
+            cross: false
           - target: aarch64-unknown-linux-gnu
-            use_cross: true
+            deb: true
+            cross: true
           - target: aarch64-unknown-linux-musl
-            use_cross: true
+            deb: false
+            cross: true
 
     steps:
       - name: Checkout repository
@@ -34,18 +38,17 @@ jobs:
           targets: ${{ matrix.target }}
 
       - name: Install musl tools
-        if: contains(matrix.target, 'musl') && !matrix.use_cross
+        if: contains(matrix.target, 'musl') && !matrix.cross
         run: sudo apt-get update && sudo apt-get install -y musl-tools
 
-      - name: Install cross
-        if: matrix.use_cross
+      - name: Install build tools
         uses: taiki-e/install-action@v2
         with:
-          tool: cross
+          tool: cross,cargo-deb
 
       - name: Build release binary
         run: |
-          if [ "${{ matrix.use_cross }}" = "true" ]; then
+          if [ "${{ matrix.cross }}" = "true" ]; then
             cross build --release --target ${{ matrix.target }}
           else
             cargo build --release --target ${{ matrix.target }}
@@ -62,8 +65,14 @@ jobs:
 
           tar -czf "${ARCHIVE_NAME}.tar.gz" "${ARCHIVE_NAME}"
 
+          if [ "${{ matrix.deb }}" = "true" ]; then
+            cargo deb --target ${{ matrix.target }} --no-build
+          fi
+
       - name: Upload release artifact
         uses: softprops/action-gh-release@v3
         with:
-          files: cpumon-${{ github.ref_name }}-${{ matrix.target }}.tar.gz
+          files: |
+            cpumon-${{ github.ref_name }}-${{ matrix.target }}.tar.gz
+            target/${{ matrix.target }}/debian/*.deb
           generate_release_notes: true
