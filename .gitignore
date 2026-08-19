@@ -1,0 +1,22 @@
+# Build artifacts
+target/
+completions/
+
+# Editor and IDE files
+.idea/
+.vscode/
+.zed/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Profiling and test outputs
+*.csv
+*.tsv
+*.jsonl
+perf.data
+perf.data.old
