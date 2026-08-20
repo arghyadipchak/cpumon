@@ -64,12 +64,25 @@ cd cpumon-*-x86_64-unknown-linux-musl
 sudo cp cpumon /usr/local/bin/
 ```
 
-### 3. Using Cargo (from Git)
+### 3. Using `bin`
+Install via [bin](https://github.com/marcosnils/bin):
+```bash
+bin install github.com/arghyadipchak/cpumon
+```
+
+### 4. Using `cargo-binstall`
+Install pre-compiled release binaries directly:
+```bash
+cargo binstall --git https://github.com/arghyadipchak/cpumon cpumon
+```
+
+### 5. Using Cargo (from Git)
+Compile and install directly from the Git repository:
 ```bash
 cargo install --git https://github.com/arghyadipchak/cpumon.git
 ```
 
-### 4. Build from Source
+### 6. Build from Source
 ```bash
 git clone https://github.com/arghyadipchak/cpumon.git
 cd cpumon
