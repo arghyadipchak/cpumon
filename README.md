@@ -1,9 +1,10 @@
 # cpumon
 
 [![CI](https://github.com/arghyadipchak/cpumon/actions/workflows/ci.yml/badge.svg)](https://github.com/arghyadipchak/cpumon/actions)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Language: Rust](https://img.shields.io/badge/language-Rust-orange.svg)](https://www.rust-lang.org/)
+[![GitHub Release](https://img.shields.io/github/v/release/arghyadipchak/cpumon)](https://github.com/arghyadipchak/cpumon/releases)
 [![Platform: Linux](https://img.shields.io/badge/platform-Linux-lightgrey.svg)](#-platform-support)
+[![Language: Rust](https://img.shields.io/badge/language-Rust-orange.svg)](https://www.rust-lang.org/)
+[![Commitizen Friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-blue.svg)](LICENSE)
 
 A lightweight, real-time per-core CPU usage monitor
